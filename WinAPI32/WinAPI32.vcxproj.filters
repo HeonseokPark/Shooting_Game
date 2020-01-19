@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="GameNode.h">
+      <Filter>FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="MyFunc.h">
+      <Filter>FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="SingletonBase.h">
+      <Filter>FrameWork\SingletonManager</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyManager.h">
+      <Filter>FrameWork\SingletonManager</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.h">
+      <Filter>FrameWork\SingletonManager</Filter>
+    </ClInclude>
+    <ClInclude Include="BmpImg.h">
+      <Filter>FrameWork\SingletonManager\ImgManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageManager.h">
+      <Filter>FrameWork\SingletonManager\ImgManager</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerInfo.h">
+      <Filter>MainGame\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>FrameWork\SingletonManager</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGame.h">
+      <Filter>MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>MainGame\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>MainGame\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectPool.h">
+      <Filter>MainGame\ObjectPool</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="GameNode.cpp">
+      <Filter>FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyManager.cpp">
+      <Filter>FrameWork\SingletonManager</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>FrameWork\SingletonManager</Filter>
+    </ClCompile>
+    <ClCompile Include="BmpImg.cpp">
+      <Filter>FrameWork\SingletonManager\ImgManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageManager.cpp">
+      <Filter>FrameWork\SingletonManager\ImgManager</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerInfo.cpp">
+      <Filter>MainGame\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>FrameWork\SingletonManager</Filter>
+    </ClCompile>
+    <ClCompile Include="WinAPI32.cpp">
+      <Filter>MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>MainGame\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>MainGame\Bullet</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="MainGame">
+      <UniqueIdentifier>{289c80cb-4c84-44e9-bdf6-cfdcef084329}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork">
+      <UniqueIdentifier>{971a6525-ca63-4baf-8c0c-1a79413b4e9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\SingletonManager">
+      <UniqueIdentifier>{7fb5abe6-7e7b-4d7e-8d6f-d11dba56259d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\SingletonManager\ImgManager">
+      <UniqueIdentifier>{ae74c074-4a6e-471f-9a87-c485f46575f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Player">
+      <UniqueIdentifier>{9284c749-41c3-407b-ae3e-699c169d2be5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Scene">
+      <UniqueIdentifier>{b8f7ee39-e6b8-40e6-911c-c589c6010082}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Bullet">
+      <UniqueIdentifier>{d72a8464-07df-44e3-931f-61ec6c12f8b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\ObjectPool">
+      <UniqueIdentifier>{40db7065-a7bb-484b-9d35-9e03e121a00a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
