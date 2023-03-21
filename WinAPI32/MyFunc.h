@@ -1,7 +1,7 @@
 #pragma once
 #define PI 3.141592654f
-#define TORADIAN 0.017435f  // PI / 180.0f
-//float Çü ±¸Á¶Ã¼
+#define TORADIAN 0.017453f  // PI / 180.0f
+//float í˜• êµ¬ì¡°ì²´
 typedef struct tagFRECT
 {
 	float left;
@@ -23,7 +23,7 @@ typedef struct tagFCIRCLE
 	float  r;
 } FCIRCLE, *PFCIRCLE;
 
-//°Å¸® ±¸ÇÏ±â
+//ê±°ë¦¬ êµ¬í•˜ê¸°
 static float GetDistance(float x1, float y1, float x2, float y2)
 {
 	float x = x1 - x2;
@@ -31,7 +31,7 @@ static float GetDistance(float x1, float y1, float x2, float y2)
 
 	return sqrtf(x * x + y * y);
 }
-//°¢µµ ±¸ÇÏ±â
+//ê°ë„ êµ¬í•˜ê¸°
 static float GetRadian(float x1, float y1, float x2, float y2)
 {
 	float x = x2 - x1;//a
@@ -50,24 +50,24 @@ static float GetDegree(float x1, float y1, float x2, float y2)
 	angle /= TORADIAN;
 	return angle;
 }
-//°¢µµ µÚÁı±â ÇÔ¼ö
+//ê°ë„ ë’¤ì§‘ê¸° í•¨ìˆ˜
 static void ReverseAngle(float &angle, bool isRadian, bool AxisX, bool AxisY)
 {
 	float angle180;
-	//»ïÇ×¿¬»êÀÚ
+	//ì‚¼í•­ì—°ì‚°ì
 	(isRadian) ? angle180 = PI : angle180 = 180.0f;
 	if (AxisX) angle = angle180 - angle;
 	if (AxisY) angle = angle180 + angle180 - angle;
 }
 
 
-//³×¸ğ ¸¸µé±â
+//ë„¤ëª¨ ë§Œë“¤ê¸°
 static FRECT RectMake(const float x, const float y, const float width, const float height)
 {
 	FRECT rc = { x , y , x + width , y + height };
 	return rc;
 }
-//¼¾ÅÍÁß½É ³×¸ğ ¸¸µé±â
+//ì„¼í„°ì¤‘ì‹¬ ë„¤ëª¨ ë§Œë“¤ê¸°
 static FRECT RectMakeCenter(const float x, const float y, const float width, const float height)
 {
 	float HalfWidth = width / 2.0f;
@@ -75,13 +75,13 @@ static FRECT RectMakeCenter(const float x, const float y, const float width, con
 	FRECT rc = { x - HalfWidth ,y - HalfHeight ,x + HalfWidth ,y + HalfHeight };
 	return rc;
 }
-//POINT ¸¸µé±â
+//POINT ë§Œë“¤ê¸°
 static FPOINT PointMake(const float x, const float y)
 {
 	FPOINT pt = { x,y };
 	return pt;
 }
-//¿ø ¸¸µé±â
+//ì› ë§Œë“¤ê¸°
 static FCIRCLE CircleMake(const float x, const float y, const float r)
 {
 	FCIRCLE cc = { x,y,r };
@@ -89,9 +89,9 @@ static FCIRCLE CircleMake(const float x, const float y, const float r)
 }
 
 
-//Ãæµ¹ ÇÔ¼ö
+//ì¶©ëŒ í•¨ìˆ˜
 
-//¸Ê Ãæµ¹. rc1 = Ä³¸¯ÅÍ ·ºÆ®, rc2 = ¸Ê ·ºÆ®
+//ë§µ ì¶©ëŒ. rc1 = ìºë¦­í„° ë ‰íŠ¸, rc2 = ë§µ ë ‰íŠ¸
 static bool isMapCollision(const FRECT rc1, const FRECT rc2)
 {
 	if (rc1.left <= rc2.left ||  rc1.top <= rc2.top || rc1.right >= rc2.right || rc1.bottom >= rc2.bottom)
@@ -102,7 +102,7 @@ static bool isMapCollision(const FRECT rc1, const FRECT rc2)
 }
 
 
-//³×¸ğ,³×¸ğ
+//ë„¤ëª¨,ë„¤ëª¨
 static bool IntersectRect(const FRECT rc1, const FRECT rc2)
 {
 	if (rc1.right >= rc2.left &&
@@ -114,7 +114,7 @@ static bool IntersectRect(const FRECT rc1, const FRECT rc2)
 	}
 	return false;
 }
-//³×¸ğ,Á¡
+//ë„¤ëª¨,ì 
 static bool PtInRect(const FRECT Rect, const FPOINT InPt)
 {
 	if (Rect.left <= InPt.x && InPt.x <= Rect.right &&
@@ -124,7 +124,7 @@ static bool PtInRect(const FRECT Rect, const FPOINT InPt)
 	}
 	return false;
 }
-//¿ø,Á¡
+//ì›,ì 
 static bool PtInCircle(const FCIRCLE cc, const FPOINT InPt)
 {
 	if (cc.r >= GetDistance(cc.x, cc.y, InPt.x, InPt.y))
@@ -134,7 +134,7 @@ static bool PtInCircle(const FCIRCLE cc, const FPOINT InPt)
 	return false;
 }
 
-//¿ø,¿ø
+//ì›,ì›
 static bool IntersectCircle(const FCIRCLE cc1, const FCIRCLE cc2)
 {
 	if (cc1.r+cc2.r >= GetDistance(cc1.x, cc1.y, cc2.x, cc2.y))
@@ -145,16 +145,16 @@ static bool IntersectCircle(const FCIRCLE cc1, const FCIRCLE cc2)
 }
 
 
-//³×¸ğ ¿ø
+//ë„¤ëª¨ ì›
 static bool IntersectRectCircle(const FRECT rc, const FCIRCLE cc)
 {
-	//¸ğ¼­¸® Á¦¿Ü ³×¸ğ ¿øÃæµ¹
+	//ëª¨ì„œë¦¬ ì œì™¸ ë„¤ëª¨ ì›ì¶©ëŒ
 	FRECT temp1{ rc.left,rc.top - cc.r , rc.right,rc.bottom + cc.r };
 	FRECT temp2{ rc.left - cc.r,rc.top, rc.right + cc.r,rc.bottom };
 	if (PtInRect(temp1, PointMake(cc.x, cc.y)))return true;
 	if (PtInRect(temp2, PointMake(cc.x, cc.y)))return true;
 
-	//¸ğ¼­¸® Ãæµ¹
+	//ëª¨ì„œë¦¬ ì¶©ëŒ
 	if (PtInCircle(cc, FPOINT{ rc.left, rc.top }))return true;
 	if(PtInCircle(cc, PointMake(rc.left, rc.bottom)))return true;
 	if(PtInCircle(cc, PointMake(rc.right, rc.top)))return true;
@@ -163,38 +163,38 @@ static bool IntersectRectCircle(const FRECT rc, const FCIRCLE cc)
 	return false;
 }
 
-//±×¸®±â ÇÔ¼ö
-//À§Ä¡°ªÀ¸·Î ±×¸®±â
-//³×¸ğ ±×¸®±â
+//ê·¸ë¦¬ê¸° í•¨ìˆ˜
+//ìœ„ì¹˜ê°’ìœ¼ë¡œ ê·¸ë¦¬ê¸°
+//ë„¤ëª¨ ê·¸ë¦¬ê¸°
 static void RectangleMake(HDC hdc, int x, int y, int width, int height)
 {
 	Rectangle(hdc, x, y, x + width, y + height);
 }
-//¼±±ß±â
+//ì„ ê¸‹ê¸°
 static void LineMake(HDC hdc, int x1, int y1, int x2, int y2)
 {
 	MoveToEx(hdc, x1, y1, NULL);
 	LineTo(hdc, x2, y2);
 }
-//Å¸¿ø±×¸®±â
+//íƒ€ì›ê·¸ë¦¬ê¸°
 static void EllipseMake(HDC hdc, int x, int y, int width, int height)
 {
 	Ellipse(hdc, x, y, x + width, y + height);
 }
-//±¸Á¶Ã¼ ³Ö¾î¼­ ±×¸®±â
-//¿ø±×¸®±â
+//êµ¬ì¡°ì²´ ë„£ì–´ì„œ ê·¸ë¦¬ê¸°
+//ì›ê·¸ë¦¬ê¸°
 static void DrawfCircle(const HDC hdc, const FCIRCLE cc)
 {
 	Ellipse(hdc, static_cast<int>(round(cc.x - cc.r)), static_cast<int>(round(cc.y - cc.r)),
 		static_cast<int>(round(cc.x + cc.r)), static_cast<int>(round(cc.y + cc.r)));
 }
-//¼±±×¸®±â
+//ì„ ê·¸ë¦¬ê¸°
 static void DrawfLine(const HDC hdc, const FPOINT pt1, const FPOINT pt2)
 {
 	MoveToEx(hdc, static_cast<int>(round(pt1.x)), static_cast<int>(round(pt1.y)), NULL);
 	LineTo(hdc, static_cast<int>(round(pt2.x)), static_cast<int>(round(pt2.y)));
 }
-//³×¸ğ±×¸®±â
+//ë„¤ëª¨ê·¸ë¦¬ê¸°
 static void DrawfRect(const HDC hdc, const FRECT rc)
 {
 	Rectangle(hdc, static_cast<int>(round(rc.left)), static_cast<int>(round(rc.top)),
@@ -202,7 +202,7 @@ static void DrawfRect(const HDC hdc, const FRECT rc)
 }
 
 
-//½º¿Ò
+//ìŠ¤ì™‘
 template <typename T>
 static void CustomSwap(T &a, T &b)
 {
@@ -212,7 +212,7 @@ static void CustomSwap(T &a, T &b)
 	b = temp;
 
 }
-//¼ÅÇÃ
+//ì…”í”Œ
 template <typename T>
 static void CustomShuffle(T a[], unsigned int time, unsigned int range)
 {
@@ -226,24 +226,24 @@ static void CustomShuffle(T a[], unsigned int time, unsigned int range)
 	}
 }
 
-//·£´ı ÇÔ¼ö
+//ëœë¤ í•¨ìˆ˜
 
-//	0 ºÎÅÍ ·£´ı int °ª °¡Á®¿À±â
+//	0 ë¶€í„° ëœë¤ int ê°’ ê°€ì ¸ì˜¤ê¸°
 static int GetInt(int num)
 {
 	return rand() % num;
 }
-//	¹üÀ§Çü ·£´ı int °ª °¡Á®¿À±â
+//	ë²”ìœ„í˜• ëœë¤ int ê°’ ê°€ì ¸ì˜¤ê¸°
 static int GetFromIntTo(int fromNum, int toNum)
 {
 	return rand() % (toNum - fromNum + 1) + fromNum;
 }
-//	0 ºÎÅÍ ·£´ı float °ª °¡Á®¿À±â
+//	0 ë¶€í„° ëœë¤ float ê°’ ê°€ì ¸ì˜¤ê¸°
 static float GetFloat(float num)
 {
 	return (static_cast<float>(rand()) / static_cast<float>(RAND_MAX)) * num;
 }
-//	¹üÀ§Çü ·£´ı float °ª °¡Á®¿À±â
+//	ë²”ìœ„í˜• ëœë¤ float ê°’ ê°€ì ¸ì˜¤ê¸°
 static float GetFromFloatTo(float fromNum, float toNum)
 {
 	float rnd = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
